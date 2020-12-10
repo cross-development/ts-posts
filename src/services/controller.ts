@@ -1,33 +1,38 @@
 //API
 import devToApi from './devToApi';
 
-export const setSearchParams = (tag: string): void => {
+const setSearchParams = (tag: string): void => {
 	devToApi.searchTag = tag;
 };
 
-type PostsProps = {
+interface PostsProps {
 	setPosts: (args: Array<any>) => void;
-	setError: (args: Boolean) => void;
-	setLoading: (args: Boolean) => void;
-};
+	setError: (args: string) => void;
+	setLoading: (args: boolean) => void;
+}
 
 export const getAllDevPosts = ({ setPosts, setError, setLoading }: PostsProps): void => {
 	setLoading(true);
 
 	devToApi
-		.fetchDevPostsByTag()
-		.then(console.log)
-		// .then(response => (status === 200 ? setWeather(response) : setError(response)))
+		.fetchAllDevPosts()
+		.then(({ data, status }) => (status === 200 ? setPosts(data) : setError(data)))
 		.catch(error => setError(error))
 		.finally(() => setLoading(false));
 };
 
-export const getForecastWeather = ({ setPosts, setError, setLoading }: PostsProps): void => {
+interface PostsTagProps extends PostsProps {
+	query: string;
+}
+
+export const getPostsByTag = ({ query, setPosts, setError, setLoading }: PostsTagProps): void => {
 	setLoading(true);
 
+	setSearchParams(query);
+
 	devToApi
-		.fetchAllDevPosts()
-		.then(console.log)
+		.fetchDevPostsByTag()
+		.then(({ data, status }) => (status === 200 ? setPosts(data) : setError(data)))
 		.catch(error => setError(error))
 		.finally(() => setLoading(false));
 };

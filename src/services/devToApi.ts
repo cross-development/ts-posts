@@ -1,7 +1,9 @@
 //Core
 import axios, { AxiosResponse } from 'axios';
 
-axios.defaults.baseURL = 'https://dev.to/api/articles';
+const corsProxy = 'https://cors-anywhere.herokuapp.com';
+
+axios.defaults.baseURL = `${corsProxy}/https://dev.to/api`;
 axios.defaults.headers.common['api-key'] = 'Tu675SeqgQZ5BcFPyEfSDzaX';
 
 type DevToApiTypes = {
