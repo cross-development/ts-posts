@@ -1,10 +1,12 @@
 //Core
 import styled from 'styled-components';
 
-export const StyledWrap = styled.div`
-	top: -1px;
-	left: 0;
-	position: sticky;
+export const StyledWrap = styled.header`
+	grid-area: header;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
 	z-index: 1100;
 	display: flex;
 	justify-content: center;
@@ -12,9 +14,8 @@ export const StyledWrap = styled.div`
 	min-height: 50px;
 	padding: 4px 24px;
 	color: #fff;
-	background-color: #ff9f43;
-	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+	background-color: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 `;
 
 export const StyledForm = styled.form`
@@ -22,9 +23,10 @@ export const StyledForm = styled.form`
 	align-items: center;
 	width: 100%;
 	max-width: 600px;
-	background-color: #fff;
+	background-color: #f9fafa;
 	border-radius: 3px;
 	overflow: hidden;
+	border: 1px solid #b5bdc4;
 `;
 
 export const StyledInput = styled.input`
@@ -35,6 +37,7 @@ export const StyledInput = styled.input`
 	border: none;
 	outline: none;
 	padding-left: 4px;
+	background-color: #f9fafa;
 	padding-right: 4px;
 
 	&::placeholder {

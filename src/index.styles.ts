@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         width: 100%;
+        background-color: #EEF0F1;
     }
 
     input {

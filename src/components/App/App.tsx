@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 //Components
 import Layout from '../Layout';
+import NavBar from '../NavBar';
 import SideBar from '../SideBar';
 import SearchBar from '../SearchBar';
 import PostsList from '../PostsList';
@@ -24,15 +25,15 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<>
+		<Layout>
 			<SearchBar onSubmit={handleSubmit} />
 
-			<Layout>
-				<SideBar />
+			<NavBar />
 
-				<PostsList />
-			</Layout>
-		</>
+			<PostsList posts={posts} />
+
+			<SideBar />
+		</Layout>
 	);
 };
 

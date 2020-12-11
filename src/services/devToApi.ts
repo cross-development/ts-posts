@@ -1,9 +1,9 @@
 //Core
 import axios, { AxiosResponse } from 'axios';
 
-const corsProxy = 'https://cors-anywhere.herokuapp.com';
+const corsProxy = 'https://thingproxy.freeboard.io/fetch/';
 
-axios.defaults.baseURL = `${corsProxy}/https://dev.to/api`;
+axios.defaults.baseURL = `${corsProxy}https://dev.to/api`;
 axios.defaults.headers.common['api-key'] = 'Tu675SeqgQZ5BcFPyEfSDzaX';
 
 type DevToApiTypes = {

@@ -31,11 +31,10 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
 			<StyledForm onSubmit={handleSubmit}>
 				<StyledInput
 					required
-					autoFocus
 					type="text"
 					value={value}
 					autoComplete="off"
-					placeholder="Search movie..."
+					placeholder="Search..."
 					onChange={handleChange}
 				/>
 
