@@ -1,6 +1,7 @@
 //Core
 import React, { useState, useEffect } from 'react';
 //Components
+import Loader from '../Loader';
 import Layout from '../Layout';
 import NavBar from '../NavBar';
 import SideBar from '../SideBar';
@@ -10,30 +11,35 @@ import PostsList from '../PostsList';
 import { getPostsByTag, getAllDevPosts } from 'services/controller';
 
 const App: React.FC = () => {
-	const [page, setPage] = useState<number>(1);
 	const [query, setQuery] = useState<string>('');
 	const [posts, setPosts] = useState<Array<any>>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<null | string>(null);
 
 	useEffect(() => {
-		getAllDevPosts({ setPosts, setError, setLoading });
-	}, []);
+		if (!query) getAllDevPosts({ setPosts, setError, setLoading });
+	}, [query]);
 
-	const handleSubmit = (query: string): void => {
-		setQuery(query);
-	};
+	useEffect(() => {
+		if (query) getPostsByTag({ query, setPosts, setError, setLoading });
+	}, [query]);
+
+	const handleSubmit = (query: string): void => setQuery(query);
 
 	return (
-		<Layout>
+		<>
 			<SearchBar onSubmit={handleSubmit} />
 
-			<NavBar />
+			<Layout>
+				<NavBar />
 
-			<PostsList posts={posts} />
+				{loading && <Loader onLoad={loading} />}
 
-			<SideBar />
-		</Layout>
+				{posts.length > 0 && <PostsList posts={posts} />}
+
+				<SideBar />
+			</Layout>
+		</>
 	);
 };
 

@@ -58,16 +58,18 @@ export const StyledAvatarWrap = styled.div`
 export const StyledAuthorInfo = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 `;
 
 export const StyledAuthorName = styled.p`
 	color: #4d5670;
 	font-weight: bold;
+	font-size: 14px;
 `;
 
 export const StyledCreated = styled.p`
 	color: #64707d;
+	font-size: 12px;
 `;
 
 export const StyledArticleInfo = styled.div`
@@ -75,8 +77,17 @@ export const StyledArticleInfo = styled.div`
 `;
 
 export const StyledTitle = styled.h3`
-	margin-bottom: 0.5rem;
-	font-size: 1.8rem;
+	& a {
+		margin-bottom: 0.5rem;
+		font-size: 1.8rem;
+		text-decoration: none;
+		color: #08090a;
+		transition: all 250ms linear;
+
+		&:hover {
+			color: #323ebe;
+		}
+	}
 `;
 
 export const StyledTagList = styled.ul`
@@ -88,10 +99,9 @@ export const StyledTagList = styled.ul`
 
 export const StyledTagItem = styled.li`
 	padding: 0.25rem;
-
-	& a {
-		text-decoration: none;
-	}
+	color: #64707d;
 `;
 
-export const StyledDescription = styled.p``;
+export const StyledDescription = styled.p`
+	color: #363d44;
+`;
